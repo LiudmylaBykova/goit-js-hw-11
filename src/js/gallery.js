@@ -20,6 +20,13 @@ const API_KEY = '41834264-e3d0e5d80121a8a176d918e74';
 refs.form.addEventListener('submit', event => {
   event.preventDefault();
   const query = refs.form.query.value.trim();
+
+  if (!query) {
+    createMessage(
+      `The search field can't be empty! Please, enter your request!`
+    );
+    return;
+  }
   const url = `${BASE_URL}?key=${API_KEY}&q=${query}&image_type=photo&orientation=horizontal&safesearch=true`;
 
   fetchImages(url)
